@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v2.0.1
+        with:
+          cmake-version: "3.28.3"
+
+      - name: Install OpenCV
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libopencv-dev
+
+      - name: Build
+        run: |
+          cmake -B build -S .
+          cmake --build build

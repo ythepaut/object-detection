@@ -9,6 +9,7 @@ Features](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf)
 
 ## Installation
 
-Libraries required :
+Libraries :
 - OpenCV 2
 - argparse
+- GTest (optional)

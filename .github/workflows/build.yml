@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 
 on:
   push:
@@ -21,11 +21,29 @@ jobs:
           cmake-version: "3.28.3"
 
       - name: Install OpenCV
+        id: install_opencv
         run: |
           sudo apt-get update
           sudo apt-get install -y libopencv-dev
+
+      - name: Install GTest
+        run: |
+          git clone https://github.com/google/googletest.git
+          cd googletest
+          cmake -B build -S .
+          cmake --build build
+          sudo cmake --install build
+
+      - name: Create Build Directory
+        run: mkdir -p build
+        shell: bash
 
       - name: Build
         run: |
           cmake -B build -S .
           cmake --build build
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure

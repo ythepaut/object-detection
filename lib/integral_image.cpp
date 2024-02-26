@@ -26,7 +26,7 @@ Mat1i integralImage(const Mat &image)
 
 int areaSum(const Mat1i &integral, int x1, int y1, int x2, int y2)
 {
-    return integral(x2, y2) - integral(x1 - 1, y2) - integral(x2, y1 - 1) + integral(x1 - 1, y1 - 1);
+    return integral(x2 + 1, y2 + 1) - integral(x1, y2 + 1) - integral(x2 + 1, y1) + integral(x1, y1);
 }
 
 vector<float> computeFeatures(const Mat1i &integral, const Rect &region)
@@ -84,5 +84,3 @@ vector<float> computeFeatures(const Mat1i &integral, const Rect &region)
     }
     return features;
 }
-
-

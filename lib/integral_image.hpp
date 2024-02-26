@@ -32,7 +32,7 @@ Mat1b greyScale(const Mat &image);
 Mat1i integralImage(const Mat &image);
 
 /**
- * Calculates the sum of the areas within a given region of a 2D matrix.
+ * @brief Calculates the sum of the areas within a given region of a 2D matrix.
  *
  * @param integral The integral image matrix.
  * @param x1 The x-coordinate of the top-left corner of the region.

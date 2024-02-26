@@ -11,6 +11,6 @@ void detection(const Mat &input, Mat &output)
     detections.emplace_back(output.cols / 2 - 25, output.rows / 2 - 25, 50, 50);
 
     // Draw detections
-    for (auto &detection : detections)
+    for (const auto &detection : detections)
         rectangle(output, detection, cv::Scalar(255, 255, 255), 2);
 }

@@ -34,13 +34,13 @@ FOREACH (FILE ${MAIN_EXEC})
 ENDFOREACH (FILE)
 
 # Tests
-if(GTest_FOUND)
+if (GTest_FOUND)
     enable_testing()
     set(TEST_EXEC test_lib)
-    add_executable(${TEST_EXEC} tests/test_lib.cpp lib/integral_image.cpp lib/detection.cpp lib/training.cpp lib/classifier.cpp)
+    add_executable(${TEST_EXEC} tests/test_lib.cpp tests/test_integral_image.cpp lib/integral_image.cpp lib/detection.cpp lib/training.cpp lib/classifier.cpp)
     target_link_libraries(${TEST_EXEC} ${GTEST_LIBRARIES} ${OpenCV_LIBS} argparse)
 
     add_test(NAME ${TEST_EXEC} COMMAND ${TEST_EXEC})
-else()
+else ()
     message(STATUS "GTest not found. Skipping tests.")
-endif()
+endif ()
